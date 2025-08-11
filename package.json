@@ -1,0 +1,49 @@
+{
+  "name": "Habit-tracker",
+  "version": "1.0.0",
+  "description": "React Vercel Habit-tracker",
+  "main": "index.js",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "ie 6-8",
+    "Firefox > 20",
+    "since 2015"
+  ],
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Yuliia Harkusha",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.27.7",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
+    "babel-plugin-minify-dead-code-elimination": "^0.5.2",
+    "css-loader": "^7.1.2",
+    "dotenv-webpack": "^8.1.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss-loader": "^8.1.1",
+    "process": "^0.11.10",
+    "sass": "^1.89.2",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "scss-reset": "^1.4.6"
+  }
+}
