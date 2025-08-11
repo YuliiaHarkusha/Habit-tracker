@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Dotenv = require('dotenv-webpack');
+const Dotenv = require("dotenv-webpack");
 
 const entryPath = "src";
 
@@ -32,8 +32,20 @@ module.exports = {
         port: 3000,
         historyApiFallback: true,
     },
+    resolve: {
+        extensions: [".js", ".jsx", ".json", ".mjs"],
+        fallback: {
+            process: require.resolve("process/browser"),  // без .js в кінці
+        },
+    },
     module: {
         rules: [
+            {
+                test: /\.m?js$/,
+                resolve: {
+                    fullySpecified: false, // щоб імпорт `.mjs` без розширень працював
+                },
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -42,32 +54,32 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: ['style-loader', 'css-loader']
+                use: ["style-loader", "css-loader"],
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [
-                    'style-loader',
-                    'css-loader',
+                    "style-loader",
+                    "css-loader",
                     {
-                        loader: 'postcss-loader',
+                        loader: "postcss-loader",
                         options: {
                             postcssOptions: {
-                                plugins: [['autoprefixer']],
+                                plugins: [["autoprefixer"]],
                             },
                         },
                     },
-                    'sass-loader'
-                ]
+                    "sass-loader",
+                ],
             },
             {
                 test: /\.(jpe?g|gif|png|svg)$/,
-                type: 'asset/resource',
+                type: "asset/resource",
                 generator: {
-                    filename: 'images/[name][ext]'
-                }
-            }
+                    filename: "images/[name][ext]",
+                },
+            },
         ],
     },
     plugins: [
@@ -76,15 +88,14 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: "index.html",
-            template: entryPath +"/index.html",
-            inject: false
+            template: entryPath + "/index.html",
+            inject: false,
         }),
         new MiniCssExtractPlugin({
             filename: "css/style.css",
         }),
         new Dotenv({
-                systemvars: true
-            }
-        ),
+            systemvars: true,
+        }),
     ],
 };
