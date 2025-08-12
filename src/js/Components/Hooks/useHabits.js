@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { fetchBinData, putBinData } from '../utils/habitsApi';
-import { findHabitsPath, getAtPath, setAtPath } from '../utils/habitRecordUtils';
+import { fetchBinData, putBinData } from '../Utils/habitsApi';
+import { findHabitsPath, getAtPath, setAtPath } from '../Utils/habitRecordUtils';
 import { addHabit, updateHabit, deleteHabit, toggleHabitForDate } from './useHabitsOperations';
 
 export function useHabits() {
