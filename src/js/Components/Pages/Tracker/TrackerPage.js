@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHabitsContext } from "../Habits/HabitsContext";
+import { useHabitsContext } from "../../Hooks/HabitsContext";
 import CalendarSelector from "./CalendarSelector";
 import TrackerList from "./TrackerList";
 

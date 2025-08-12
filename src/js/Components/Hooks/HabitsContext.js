@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { useHabits } from "./useHabits";
 
-const HabitsContext = createContext();
+const HabitsContext = createContext(null);
 
 export const HabitsProvider = ({ children }) => {
     const habitsData = useHabits();
@@ -13,4 +13,10 @@ export const HabitsProvider = ({ children }) => {
     );
 };
 
-export const useHabitsContext = () => useContext(HabitsContext);
+export const useHabitsContext = () => {
+    const context = useContext(HabitsContext);
+    if (!context) {
+        throw new Error("useHabitsContext must be used within a HabitsProvider");
+    }
+    return context;
+};

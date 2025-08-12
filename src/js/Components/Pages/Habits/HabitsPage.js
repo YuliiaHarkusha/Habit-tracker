@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHabitsContext } from "./HabitsContext";
+import { useHabitsContext } from "../../Hooks/HabitsContext";
 import HabitList from "./HabitList";
 import HabitForm from "./HabitForm";
 

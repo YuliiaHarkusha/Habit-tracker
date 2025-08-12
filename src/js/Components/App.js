@@ -6,7 +6,7 @@ import Home from "./Pages/Home";
 import HabitsPage from "./Pages/Habits/HabitsPage";
 import TrackerPage from "./Pages/Tracker/TrackerPage";
 
-import { HabitsProvider } from "./Pages/Habits/HabitsContext";
+import { HabitsProvider } from "./Hooks/HabitsContext";
 
 const App = () => {
     return (
