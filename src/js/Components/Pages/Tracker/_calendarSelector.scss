@@ -1,0 +1,29 @@
+.react-calendar {
+  background: white;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  width: 100%;
+  max-width: 350px;
+
+  .react-calendar__tile {
+    padding: 8px;
+    text-align: center;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}
+.calendar-done {
+  background-color: #a4f0a4 !important;
+  border-radius: 50% !important;
+  color: black !important;
+
+  &:hover,
+  &:focus {
+    background-color: #91e491 !important;
+  }
+}

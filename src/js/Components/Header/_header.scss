@@ -1,0 +1,9 @@
+@use "../../../scss/general/variables";
+@use "../../../scss/general/mixins";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 0 variables.$adjacentColor;
+}
