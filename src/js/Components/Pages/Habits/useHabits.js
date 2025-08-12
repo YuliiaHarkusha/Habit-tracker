@@ -16,7 +16,7 @@ export function useHabits() {
             });
             if (!res.ok) throw new Error('Failed to fetch');
             const data = await res.json();
-            setHabits(data.habits || []);
+            setHabits(data.record.habits || []);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -34,7 +34,7 @@ export function useHabits() {
                     'Content-Type': 'application/json',
                     'X-Master-Key': API_KEY,
                 },
-                body: JSON.stringify({ habits: newHabits }),
+                body: JSON.stringify({ record: { habits: newHabits } }),
             });
             if (!res.ok) throw new Error('Failed to save');
             setHabits(newHabits);
