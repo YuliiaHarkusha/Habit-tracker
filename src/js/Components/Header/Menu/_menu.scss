@@ -1,0 +1,16 @@
+@use "../../../../scss/general/variables";
+@use "../../../../scss/general/mixins";
+
+.menu {
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    li a{
+      text-decoration: none;
+      color: variables.$secondaryColor;
+      font-weight: 600;
+      margin-right: 2em;
+    }
+  }
+}
