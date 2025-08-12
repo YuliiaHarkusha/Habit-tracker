@@ -1,0 +1,14 @@
+@use 'scss-reset';
+@use "../general/variables";
+@use "../general/mixins";
+@use "../general/typography";
+
+body {
+  background-color: variables.$primaryColor;
+  font-family: variables.$primaryFont;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
