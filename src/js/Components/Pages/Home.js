@@ -1,34 +1,30 @@
 import React, { useState } from "react";
 import { useHabitsContext } from "../Hooks/HabitsContext";
+import "./_home.scss";
 
 const Home = () => {
     const { habits, loading, error, toggleHabitForDate } = useHabitsContext();
-    const [currentDate] = useState(new Date()); // поточна дата, фіксована
+    const [currentDate] = useState(new Date());
 
-    if (loading) return <p>Loading habits...</p>;
-    if (error) return <p>Error loading habits: {error}</p>;
-    if (!habits.length) return <p>No habits added yet.</p>;
+    if (loading) return <p className="loading">Loading habits...</p>;
+    if (error) return <p className="error">Error loading habits: {error}</p>;
+    if (!habits.length) return <p className="empty">No habits added yet.</p>;
 
     const dateStr = currentDate.toISOString().split('T')[0];
 
     return (
-        <div>
-            <h1>Your Habits for Today</h1>
-            <ul>
+        <div className="home">
+            <h1 className="home__title">Your Habits for Today</h1>
+            <ul className="home__list">
                 {habits.map(habit => {
                     const done = habit.records?.some(r => r.date === dateStr && r.done);
                     return (
                         <li
                             key={habit.id}
                             onClick={() => toggleHabitForDate(habit.id, currentDate)}
-                            style={{
-                                cursor: "pointer",
-                                textDecoration: done ? "line-through" : "none",
-                                color: done ? "green" : "black",
-                                userSelect: "none"
-                            }}
+                            className={`home__item ${done ? "done" : ""}`}
                         >
-                            {habit.title} {done ? '✅' : '⬜'}
+                            {habit.title} {done ? '☑️' : '⬜'}
                         </li>
                     );
                 })}
