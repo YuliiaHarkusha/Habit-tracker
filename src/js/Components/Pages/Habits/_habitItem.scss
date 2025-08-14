@@ -1,0 +1,67 @@
+@use "../../../../scss/general/variables";
+@use "../../../../scss/general/mixins";
+@use "sass:color";
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #fff;
+  margin-bottom: 0.5rem;
+
+  h3 {
+    margin: 0;
+    flex: 1;
+  }
+
+  .habit-item__buttons {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      padding: 0.4rem 0.8rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      min-width: 60px;
+      text-align: center;
+
+      &:active {
+        transform: scale(0.97);
+      }
+
+      &.edit {
+        background-color: #4caf50;
+        color: #fff;
+
+        &:hover { background-color: color.adjust(#4caf50, $lightness: -10%); }
+        &:active { background-color: color.adjust(#4caf50, $lightness: -15%); }
+      }
+
+      &.delete {
+        background-color: #f44336;
+        color: #fff;
+
+        &:hover { background-color: color.adjust(#f44336, $lightness: -10%); }
+        &:active { background-color: color.adjust(#f44336, $lightness: -15%); }
+      }
+    }
+  }
+
+  @include mixins.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    .habit-item__buttons {
+      width: 100%;
+      button {
+        flex: 1;
+      }
+    }
+  }
+}
