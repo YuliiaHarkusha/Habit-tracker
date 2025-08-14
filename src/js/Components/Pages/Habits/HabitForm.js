@@ -1,28 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import "./_habitForm.scss";
 
-const HabitForm = ({ onSave, onCancel }) => {
+const HabitForm = ({ habit, onSave, onCancel }) => {
     const [title, setTitle] = useState('');
+
+    useEffect(() => {
+        if (habit) setTitle(habit.title);
+        else setTitle('');
+    }, [habit]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (title.trim()) {
-            onSave({ title });
+            onSave({ ...habit, title });
             setTitle('');
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="habit-form" onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Enter habit"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <div>
-                <button type="submit">Save</button>
+            <div className="habit-form__buttons">
+                <button type="submit" className="save">Save</button>
                 <button
-                    type="button" // важливо, щоб не сабмітило форму
+                    type="button"
+                    className="cancel"
                     onClick={() => {
                         setTitle('');
                         if (onCancel) onCancel();

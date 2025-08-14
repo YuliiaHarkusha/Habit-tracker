@@ -1,5 +1,6 @@
 import React from "react";
 import HabitItem from "./HabitItem";
+import "./_habitList.scss";
 
 const HabitList = ({ habits, onEdit, onDelete }) => {
     if (!habits.length) return <p>No habits yet</p>;
