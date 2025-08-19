@@ -11,8 +11,7 @@ const TrackerList = ({ habits, selectedDate, onToggle }) => {
                     key={habit.id}
                     habit={habit}
                     selectedDate={selectedDate}
-                    onToggle={onToggle}
-                />
+                    onToggle={onToggle}/>
             ))}
         </div>
     );

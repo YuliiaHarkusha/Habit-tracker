@@ -2,6 +2,11 @@ import React, { useMemo } from 'react';
 import Calendar from 'react-calendar';
 import './_calendarSelector.scss';
 
+const pad = (n) => (n < 10 ? "0" + n : n);
+const getLocalDateStr = (date) => {
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+};
+
 const CalendarSelector = ({ value, onChange, habits }) => {
     const doneDates = useMemo(() => {
         const dates = new Set();
@@ -15,9 +20,8 @@ const CalendarSelector = ({ value, onChange, habits }) => {
 
     const tileClassName = ({ date, view }) => {
         if (view === 'month') {
-            const dateStr = date.toISOString().split('T')[0];
-            if (doneDates.has(dateStr)) return 'calendar-done';
-        }
+            const dateStr = getLocalDateStr(date);
+            if (doneDates.has(dateStr)) return 'calendar-done';}
         return null;
     };
 
@@ -25,8 +29,7 @@ const CalendarSelector = ({ value, onChange, habits }) => {
         <Calendar
             value={value}
             onChange={onChange}
-            tileClassName={tileClassName}
-        />
+            tileClassName={tileClassName}/>
     );
 };
 

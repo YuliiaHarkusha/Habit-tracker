@@ -13,10 +13,15 @@ const TrackerPage = () => {
     return (
         <div className="tracker-page">
             <h1>Habit Tracker</h1>
-            <CalendarSelector value={selectedDate} onChange={setSelectedDate} habits={habits} />
-            <TrackerList habits={habits} selectedDate={selectedDate} onToggle={toggleHabitForDate} />
+            <CalendarSelector
+                value={selectedDate}
+                onChange={setSelectedDate}
+                habits={habits}/>
+            <TrackerList
+                habits={habits}
+                selectedDate={selectedDate}
+                onToggle={toggleHabitForDate}/>
         </div>
     );
 };
-
 export default TrackerPage;
