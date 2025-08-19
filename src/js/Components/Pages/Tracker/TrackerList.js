@@ -1,5 +1,6 @@
 import React from 'react';
 import TrackerItem from './TrackerItem';
+import "./_trackerList.scss"
 
 const TrackerList = ({ habits, selectedDate, onToggle }) => {
     if (!habits.length) return <p>No habits found.</p>;

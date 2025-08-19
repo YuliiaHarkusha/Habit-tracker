@@ -1,0 +1,10 @@
+@use "../../../../scss/general/mixins";
+.tracker-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include mixins.tablet { gap: 15px; }
+  @include mixins.mobile { gap: 14px; }
+}

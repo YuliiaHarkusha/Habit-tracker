@@ -16,7 +16,7 @@ const TrackerItem = ({ habit, selectedDate, onToggle }) => {
 
     return (
         <div
-            className={`tracker-item ${done ? 'done' : 'pending'}`}
+            className={`tracker-item ${done ? 'done' : ''}`}
             onClick={handleClick}>
             <span>{habit.title}</span>
             <strong>{done ? '✅' : '⬜'}</strong>

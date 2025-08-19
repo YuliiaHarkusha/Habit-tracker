@@ -1,21 +1,41 @@
+@use "../../../../scss/general/mixins";
 .tracker-item {
   display: flex;
   justify-content: space-between;
-  padding: 8px 12px;
-  border-bottom: 1px solid #eee;
+  align-items: center;
+  padding: 22px 26px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  background: #F1F3FF;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  transition: all 0.3s ease, transform 0.2s ease;
 
   &.done {
-    background-color: #e6ffe6;
+    background-color: rgba(164,240,164,0.25);
     text-decoration: line-through;
   }
 
-  &.pending {
-    background-color: #fff;
+  &:hover {
+    background-color: rgba(241,243,255,0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.08);
   }
 
-  &:hover {
-    background-color: #f9f9f9;
+  &:active {
+    transform: scale(0.97);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  strong {
+    transition: color 0.3s ease;
+  }
+
+  @include mixins.tablet {
+    padding: 18px 20px;
+  }
+
+  @include mixins.mobile {
+    padding: 16px 14px;
   }
 }

@@ -73,3 +73,60 @@
     }
   }
 }
+.tracker-page {
+  h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: variables.$secondaryColor;
+    @include mixins.tablet {
+      font-size: 30px;
+    }
+    @include mixins.mobile {
+      font-size: 24px;
+    }
+  }
+}
+.tracker-item {
+  font-size: 18px;
+  strong {
+    font-size: 18px;
+  }
+  @include mixins.tablet {
+    font-size: 16px;
+    strong { font-size: 16px; }
+  }
+  @include mixins.mobile {
+    font-size: 15px;
+    strong { font-size: 15px; }
+  }
+}
+.react-calendar {
+  font-size: 18px;
+  @include mixins.tablet {
+    font-size: 16px;
+  }
+  @include mixins.mobile {
+    font-size: 16px;
+  }
+  .react-calendar__navigation {
+    button {
+      font-size: 18px;
+      font-weight: 600;
+      @include mixins.tablet {
+        font-size: 16px;
+      }
+      @include mixins.mobile {
+        font-size: 16px;
+      }
+    }
+  }
+  .react-calendar__tile {
+    font-size: 17px;
+    @include mixins.tablet {
+      font-size: 15px;
+    }
+    @include mixins.mobile {
+      font-size: 15px;
+    }
+  }
+}

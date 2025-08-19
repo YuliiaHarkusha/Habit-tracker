@@ -1,0 +1,24 @@
+@use "../../../../scss/general/mixins";
+.tracker-page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 50px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+
+  h1 {
+    text-align: center;
+  }
+
+  @include mixins.tablet {
+    padding: 48px 20px;
+    gap: 36px;
+  }
+
+  @include mixins.mobile {
+    padding: 28px 16px;
+    gap: 28px;
+  }
+}

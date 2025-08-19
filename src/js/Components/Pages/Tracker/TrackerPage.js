@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHabitsContext } from "../../Hooks/HabitsContext";
 import CalendarSelector from "./CalendarSelector";
 import TrackerList from "./TrackerList";
+import "./_trackerPage.scss"
 
 const TrackerPage = () => {
     const { habits, loading, error, toggleHabitForDate } = useHabitsContext();
