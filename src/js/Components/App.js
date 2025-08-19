@@ -7,6 +7,7 @@ import HabitsPage from "./Pages/Habits/HabitsPage";
 import TrackerPage from "./Pages/Tracker/TrackerPage";
 
 import { HabitsProvider } from "./Hooks/HabitsContext";
+import StatisticsPage from "./Pages/Statistics/StatisticsPage";
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/habits" element={<HabitsPage />} />
                 <Route path="/tracker" element={<TrackerPage />} />
+                <Route path="/statistics" element={<StatisticsPage />} />
             </Routes>
         </HabitsProvider>
     );

@@ -130,3 +130,39 @@
     }
   }
 }
+
+.statistics-page {
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: variables.$secondaryColor;
+  }
+}
+
+.month-selector {
+  button {
+    font-size: 1rem;
+  }
+}
+.habit-statistics-item {
+  .habit-header {
+    h3 {
+      font-size: 1rem;
+      @include mixins.tablet {
+        font-size: 0.95rem;
+      }
+      @include mixins.mobile {
+        font-size: 0.9rem;
+      }
+    }
+    .habit-percentage {
+      font-size: 0.9rem;
+      @include mixins.tablet {
+        font-size: 0.85rem;
+      }
+      @include mixins.mobile {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

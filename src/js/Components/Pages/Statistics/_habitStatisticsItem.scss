@@ -1,0 +1,69 @@
+@use "../../../../scss/general/mixins";
+.habit-statistics-item {
+  margin-bottom: 1rem;
+
+  .habit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    h3 {
+      margin: 0;
+    }
+
+    .habit-percentage {
+      color: #555;
+      font-weight: 500;
+    }
+  }
+
+  .habit-progress {
+    display: flex;
+    height: 24px;
+    border-radius: 9px;
+    background: #e0e0ff;
+    overflow: hidden;
+
+    .segment {
+      height: 100%;
+      transition: flex 0.5s ease, box-shadow 0.5s ease;
+
+      &:not(.empty-segment) {
+        min-width: 8px;
+      }
+    }
+
+    .completed-segment {
+      background: linear-gradient(90deg, #a394ff, #7f68ff);
+      box-shadow: 0 2px 6px rgba(127, 104, 255, 0.2); // легка тінь
+      border-radius: 8px;
+    }
+
+    .empty-segment {
+      background: transparent;
+    }
+  }
+
+  @include mixins.tablet {
+    .habit-progress {
+      height: 20px;
+
+      .completed-segment {
+        border-radius: 6px;
+        min-width: 6px;
+      }
+    }
+  }
+
+  @include mixins.mobile {
+    .habit-progress {
+      height: 16px;
+
+      .completed-segment {
+        border-radius: 4px;
+        min-width: 4px;
+      }
+    }
+  }
+}
