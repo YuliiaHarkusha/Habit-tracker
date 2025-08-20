@@ -2,9 +2,8 @@ import React from 'react';
 import './_trackerItem.scss';
 
 const pad = (n) => (n < 10 ? "0" + n : n);
-const getLocalDateStr = (date) => {
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-};
+const getLocalDateStr = (date) =>
+    `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 
 const TrackerItem = ({ habit, selectedDate, onToggle }) => {
     const dateStr = getLocalDateStr(selectedDate);

@@ -13,7 +13,9 @@
 
   &.done {
     background-color: rgba(164,240,164,0.25);
-    text-decoration: line-through;
+    span {
+      text-decoration: line-through;
+    }
   }
 
   &:hover {
