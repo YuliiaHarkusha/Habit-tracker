@@ -1,6 +1,8 @@
 @use "./variables";
 @use "mixins";
 
+// Menu
+
 .menu {
   li a {
     font-size: 1.2em;
@@ -21,6 +23,8 @@
   }
 }
 
+// Home
+
 .home__title {
   font-size: 2.5em;
   font-weight: bold;
@@ -31,7 +35,6 @@
 .home__item {
   font-size: 1.25em;
 }
-
 .habits__title {
   font-size: 2.5em;
   font-weight: bold;
@@ -40,13 +43,24 @@
     font-size: 2em;
   }
 }
+.habit-status {
+  font-size: 1.2rem;
+  @include mixins.tablet {
+    font-size: 1.1rem;
+  }
+  @include mixins.mobile {
+    font-size: 1rem;
+  }
+}
+
+//Habits
+
 .habit-list {
   font-size: 1.25em;
 }
 .habit-item {
   font-size: 1.25em;
 }
-
 .habit-form {
   input[type="text"] {
     font-size: 1.1em;
@@ -73,6 +87,9 @@
     }
   }
 }
+
+// Tracker
+
 .tracker-page {
   h1 {
     font-size: 36px;
@@ -130,6 +147,8 @@
     }
   }
 }
+
+// Statistics
 
 .statistics-page {
   h1 {
