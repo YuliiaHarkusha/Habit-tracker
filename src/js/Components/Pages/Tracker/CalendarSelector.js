@@ -2,18 +2,22 @@ import React, { useMemo } from 'react';
 import Calendar from 'react-calendar';
 import './_calendarSelector.scss';
 
-const pad = (n) => (n < 10 ? "0" + n : n);
-const getLocalDateStr = (date) =>
-    `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+const getLocalDateStr = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+};
 const CalendarSelector = ({ value, onChange, habits }) => {
     const doneDates = useMemo(() => {
         const dates = new Set();
         habits.forEach(habit => {
             habit.records?.forEach(r => {
-                if (r.done) dates.add(r.date);
+                if (r.done) dates.add(r.date); // зберігаємо рядки YYYY-MM-DD
             });
         });
-        return dates;}, [habits]);
+        return dates;
+    }, [habits]);
     const tileClassName = ({ date, view }) => {
         if (view === 'month') {
             const dateStr = getLocalDateStr(date);
@@ -26,13 +30,14 @@ const CalendarSelector = ({ value, onChange, habits }) => {
             value={value}
             onChange={onChange}
             tileClassName={tileClassName}
-            locale="en-US"              // <-- завжди англійська
+            locale="en-US"
             formatShortWeekday={(locale, date) =>
-                date.toLocaleDateString('en-US', { weekday: 'short' }) // англійські дні тижня
+                date.toLocaleDateString('en-US', { weekday: 'short' })
             }
             formatMonthYear={(locale, date) =>
-                date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) // місяць + рік
-            }/>
+                date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+            }
+        />
     );
 };
 export default CalendarSelector;

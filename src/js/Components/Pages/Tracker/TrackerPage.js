@@ -25,4 +25,5 @@ const TrackerPage = () => {
         </div>
     );
 };
+
 export default TrackerPage;

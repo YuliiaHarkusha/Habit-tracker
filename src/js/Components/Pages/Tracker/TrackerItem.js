@@ -1,16 +1,19 @@
 import React from 'react';
 import './_trackerItem.scss';
 
-const pad = (n) => (n < 10 ? "0" + n : n);
-const getLocalDateStr = (date) =>
-    `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+const getLocalDateStr = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+};
 
 const TrackerItem = ({ habit, selectedDate, onToggle }) => {
     const dateStr = getLocalDateStr(selectedDate);
     const done = habit.records?.some(r => r.date === dateStr && r.done);
 
     const handleClick = () => {
-        onToggle(habit.id, selectedDate);
+        onToggle(habit.id, dateStr);
     };
 
     return (
