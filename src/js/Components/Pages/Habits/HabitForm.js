@@ -5,36 +5,34 @@ const HabitForm = ({ habit, onSave, onCancel }) => {
     const [title, setTitle] = useState('');
 
     useEffect(() => {
-        if (habit) setTitle(habit.title);
-        else setTitle('');
+        setTitle(habit?.title || '');
     }, [habit]);
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (title.trim()) {
-            onSave({ ...habit, title });
-            setTitle('');
-        }
-    };
+        const trimmed = title.trim();
+        if (!trimmed) return;
 
+        const newHabit = habit
+            ? { ...habit, title: trimmed }
+            : { title: trimmed };
+
+        onSave(newHabit);
+        setTitle('');
+    };
+    const handleCancel = () => {
+        setTitle('');
+        if (onCancel) onCancel();
+    };
     return (
         <form className="habit-form" onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Enter habit"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
+                onChange={(e) => setTitle(e.target.value)}/>
             <div className="habit-form__buttons">
                 <button type="submit" className="save">Save</button>
-                <button
-                    type="button"
-                    className="cancel"
-                    onClick={() => {
-                        setTitle('');
-                        if (onCancel) onCancel();
-                    }}
-                >
+                <button type="button" className="cancel" onClick={handleCancel}>
                     Cancel
                 </button>
             </div>

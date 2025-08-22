@@ -15,6 +15,9 @@ export const findHabitsPath = (obj) => {
         }
         depth++;
     }
+    if (cur?.record?.habits) {
+        return [...path, 'record', 'habits'];
+    }
     return ['habits'];
 };
 

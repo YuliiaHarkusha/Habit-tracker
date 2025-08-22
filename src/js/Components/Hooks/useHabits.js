@@ -1,63 +1,20 @@
-import { useState, useEffect } from 'react';
-import { fetchBinData, putBinData } from '../Utils/habitsApi';
-import { findHabitsPath, getAtPath, setAtPath } from '../Utils/habitRecordUtils';
-import { addHabit, updateHabit, deleteHabit, toggleHabitForDate } from './useHabitsOperations';
+import { setCurrentUser, fetchBinData, putBinDataForUser } from "../Utils/habitsApi";
 
-export function useHabits() {
-    const [habits, setHabits] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+export const fetchHabitsForUser = async (userId) => {
+    setCurrentUser(userId);
+    const allHabits = await fetchBinData();
 
-    const fetchHabits = async () => {
-        setLoading(true);
-        try {
-            const data = await fetchBinData();
-            const topRecord = data.record ?? {};
-            const path = findHabitsPath(topRecord);
-            setHabits(getAtPath(topRecord, path) || []);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const userHabits = allHabits.filter(h => h.userId === userId);
+    if (userHabits.length === 0) {
+        const demoHabits = allHabits
+            .filter(h => h.userId === "demo")
+            .map(h => ({ ...h, id: Date.now() + Math.random(), userId }));
+        await putBinDataForUser(demoHabits);
+        return demoHabits;
+    }
+    return userHabits;
+};
 
-    const saveHabits = async (newHabits) => {
-        setLoading(true);
-        try {
-            const data = await fetchBinData();
-            const latestRecord = data.record ?? {};
-            const path = findHabitsPath(latestRecord);
-            const updatedRecord = setAtPath(latestRecord, path, newHabits);
-
-            await putBinData(updatedRecord);
-
-            setHabits(newHabits);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const wrappedAddHabit = (habit) => addHabit(habits, habit, saveHabits);
-    const wrappedUpdateHabit = (updatedHabit) => updateHabit(habits, updatedHabit, saveHabits);
-    const wrappedDeleteHabit = (id) => deleteHabit(habits, id, saveHabits);
-    const wrappedToggleHabitForDate = (habitId, date) => toggleHabitForDate(habits, habitId, date, saveHabits);
-
-    useEffect(() => {
-        fetchHabits();
-    }, []);
-
-    return {
-        habits,
-        loading,
-        error,
-        fetchHabits,
-        saveHabits,
-        addHabit: wrappedAddHabit,
-        updateHabit: wrappedUpdateHabit,
-        deleteHabit: wrappedDeleteHabit,
-        toggleHabitForDate: wrappedToggleHabitForDate,
-    };
-}
+export const saveHabitsForUser = async (habits) => {
+    return await putBinDataForUser(habits);
+};

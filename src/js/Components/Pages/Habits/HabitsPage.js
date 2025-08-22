@@ -9,16 +9,27 @@ const HabitsPage = () => {
     const [editingHabit, setEditingHabit] = useState(null);
 
     const handleSave = async (habit) => {
-        if (habit.id) await updateHabit(habit);
-        else await addHabit(habit);
+        if (habit.id) {
+            await updateHabit(habit);
+        } else {
+            await addHabit(habit);
+        }
         setEditingHabit(null);
     };
 
     return (
         <div className="habits-page">
             <h1 className="habits__title">Your Habits</h1>
-            <HabitForm habit={editingHabit} onSave={handleSave} onCancel={() => setEditingHabit(null)} />
-            <HabitList habits={habits} onEdit={setEditingHabit} onDelete={deleteHabit} />
+            <HabitForm
+                habit={editingHabit}
+                onSave={handleSave}
+                onCancel={() => setEditingHabit(null)}
+            />
+            <HabitList
+                habits={habits || []}
+                onEdit={setEditingHabit}
+                onDelete={deleteHabit}
+            />
         </div>
     );
 };
