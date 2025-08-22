@@ -1,7 +1,6 @@
 import { saveHabitsForUser } from "./useHabits";
 
 export const useHabitsActions = (habits, setHabits) => {
-
     const addHabit = async (habit) => {
         const newHabit = { ...habit, id: Date.now(), records: [] };
         const updated = [...habits, newHabit];

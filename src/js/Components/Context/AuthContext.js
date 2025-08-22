@@ -1,31 +1,28 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 const AuthContext = createContext(null);
 
-const generateUserId = () => `user_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
-
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [token, setToken] = useState(null);
 
     useEffect(() => {
-        let storedUserId = localStorage.getItem("userId");
-        if (!storedUserId) {
-            storedUserId = generateUserId();
-            localStorage.setItem("userId", storedUserId);
+        let storedId = localStorage.getItem("userId");
+        if (!storedId) {
+            storedId = "user_" + Date.now() + "_" + Math.floor(Math.random() * 1000);
+            localStorage.setItem("userId", storedId);
         }
-        setUser({ id: storedUserId, name: "Demo User" });
+        setUser({ id: storedId, name: "Demo User" });
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, setUser, token, setToken }}>
+        <AuthContext.Provider value={{ user, setUser }}>
             {children}
         </AuthContext.Provider>
     );
 };
 
 export const useAuth = () => {
-    const context = useContext(AuthContext);
+    const context = React.useContext(AuthContext);
     if (!context) throw new Error("useAuth must be used within AuthProvider");
     return context;
 };
