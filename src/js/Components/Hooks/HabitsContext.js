@@ -26,13 +26,16 @@ export const HabitsProvider = ({ children }) => {
         };
         init();
     }, [user]);
+
     const actions = useHabitsActions(habits, setHabits);
+
     return (
         <HabitsContext.Provider value={{ habits, loading, error, ...actions }}>
             {children}
         </HabitsContext.Provider>
     );
 };
+
 export const useHabitsContext = () => {
     const context = useContext(HabitsContext);
     if (!context) throw new Error("useHabitsContext must be used within HabitsProvider");

@@ -1,10 +1,21 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext(null);
 
+const generateUserId = () => `user_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState({ id: "user1", name: "Demo User" });
+    const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        let storedUserId = localStorage.getItem("userId");
+        if (!storedUserId) {
+            storedUserId = generateUserId();
+            localStorage.setItem("userId", storedUserId);
+        }
+        setUser({ id: storedUserId, name: "Demo User" });
+    }, []);
 
     return (
         <AuthContext.Provider value={{ user, setUser, token, setToken }}>
@@ -15,6 +26,6 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => {
     const context = useContext(AuthContext);
-    if (!context) throw new Error("useAuth must be used within an AuthProvider");
+    if (!context) throw new Error("useAuth must be used within AuthProvider");
     return context;
 };
