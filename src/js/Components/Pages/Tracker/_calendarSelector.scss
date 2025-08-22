@@ -1,12 +1,13 @@
 @use "../../../../scss/general/mixins";
+@use "../../../../scss/general/variables";
 
 .react-calendar {
   max-width: 500px;
   width: 100%;
   border-radius: 22px;
   padding: 24px;
-  background: rgba(255,255,255,0.97);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  background: variables.$calendarBg;
+  box-shadow: 0 18px 40px variables.$trackerItemShadow;
   margin: 0 auto;
 
   .react-calendar__navigation {
@@ -21,8 +22,9 @@
       padding: 8px 14px;
       border-radius: 14px;
       transition: all 0.3s ease;
+      color: variables.$textColor;
 
-      &:hover { background-color: rgba(0,0,0,0.05); transform: translateY(-2px); }
+      &:hover { background-color: variables.$navButtonHoverBg; transform: translateY(-2px); }
       &:active { transform: scale(0.95); }
       outline: none;
       -webkit-tap-highlight-color: transparent;
@@ -32,7 +34,7 @@
   .react-calendar__month-view__weekdays {
     text-align: center;
     font-weight: 600;
-    color: #555;
+    color: variables.$calendarWeekdayColor;
   }
 
   .react-calendar__tile {
@@ -41,20 +43,21 @@
     transition: all 0.3s ease;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    color: variables.$textColor;
 
-    &:hover { background-color: rgba(0,0,0,0.06); transform: translateY(-2px); }
+    &:hover { background-color: variables.$calendarTileHover; transform: translateY(-2px); }
     &:active { transform: scale(0.95); }
   }
 }
 
 .calendar-done {
-  background-color: rgba(164,240,164,0.65) !important;
+  background-color: variables.$calendarDoneBg !important;
   border-radius: 50% !important;
-  color: black !important;
+  color: variables.$textColor !important;
   transition: all 0.3s ease;
 
   &:hover,
-  &:focus { background-color: rgba(145,228,145,0.75) !important; transform: translateY(-2px); }
+  &:focus { background-color: variables.$calendarDoneHover !important; transform: translateY(-2px); }
 }
 
 @include mixins.tablet {

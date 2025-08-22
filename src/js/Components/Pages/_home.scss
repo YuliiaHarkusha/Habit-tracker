@@ -35,7 +35,7 @@
     user-select: none;
     text-align: left;
     transition: background-color 0.2s ease;
-
+    color: variables.$textColor;
     &:hover {
       background-color: variables.$hoverBgColor;
     }

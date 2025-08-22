@@ -7,9 +7,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid variables.$grayLightBorder;
   border-radius: 6px;
-  background-color: #fff;
+  background-color: variables.$whitePure;
   margin-bottom: 0.5rem;
 
   h3 {
@@ -35,19 +35,19 @@
       }
 
       &.edit {
-        background-color: #4caf50;
-        color: #fff;
+        background-color: variables.$greenSuccess;
+        color: variables.$whitePure;
 
-        &:hover { background-color: color.adjust(#4caf50, $lightness: -10%); }
-        &:active { background-color: color.adjust(#4caf50, $lightness: -15%); }
+        &:hover { background-color: color.adjust(variables.$greenSuccess, $lightness: -10%); }
+        &:active { background-color: color.adjust(variables.$greenSuccess, $lightness: -15%); }
       }
 
       &.delete {
-        background-color: #f44336;
-        color: #fff;
+        background-color: variables.$redError;
+        color: variables.$whitePure;
 
-        &:hover { background-color: color.adjust(#f44336, $lightness: -10%); }
-        &:active { background-color: color.adjust(#f44336, $lightness: -15%); }
+        &:hover { background-color: color.adjust(variables.$redError, $lightness: -10%); }
+        &:active { background-color: color.adjust(variables.$redError, $lightness: -15%); }
       }
     }
   }

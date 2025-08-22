@@ -1,32 +1,33 @@
 @use "../../../../scss/general/mixins";
+@use "../../../../scss/general/variables";
 .tracker-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 22px 26px;
   cursor: pointer;
-  background: #F1F3FF;
+  background: variables.$primaryColor;
   border-radius: 20px;
   margin-bottom: 16px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 28px variables.$calendarTileHover;
   transition: all 0.3s ease, transform 0.2s ease;
 
   &.done {
-    background-color: rgba(164,240,164,0.25);
+    background-color: variables.$greenSuccessLight;
     span {
       text-decoration: line-through;
     }
   }
 
   &:hover {
-    background-color: rgba(241,243,255,0.9);
+    background-color: variables.$trackerHoverBg;
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 14px 30px variables.$trackerItemShadow;
   }
 
   &:active {
     transform: scale(0.97);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 20px variables.$trackerItemShadow;
   }
 
   strong {

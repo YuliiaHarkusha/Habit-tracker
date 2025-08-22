@@ -1,3 +1,4 @@
+@use "../../../../scss/general/variables";
 .month-selector {
   display: flex;
   justify-content: center;
@@ -6,24 +7,24 @@
   margin-bottom: 1.5rem;
 
   button {
-    background: linear-gradient(135deg, #a394ff, #7f68ff);
-    color: #fff;
+    background: linear-gradient(135deg, variables.$calendarGradientStart, variables.$calendarGradientEnd);
+    color: variables.$whitePure;
     border: none;
     padding: 0.5rem 0.8rem;
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 6px variables.$monthSelectorShadowLight;
 
     &:hover {
-      background: linear-gradient(135deg, #8a7fff, #6f5ce3);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, variables.$monthSelectorGradientHoverStart, variables.$monthSelectorGradientHoverEnd);
+      box-shadow: 0 4px 12px variables.$monthSelectorShadowHover;
     }
   }
 
   span {
     font-size: 1.1rem;
     font-weight: 500;
-    color: #333;
+    color: variables.$monthSelectorText;
   }
 }
