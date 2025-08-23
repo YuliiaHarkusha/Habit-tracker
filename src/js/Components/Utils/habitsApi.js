@@ -11,7 +11,7 @@ export const fetchBinData = async () => {
         const res = await fetch(API_URL, { headers: { "X-Master-Key": API_KEY } });
         if (!res.ok) throw new Error("Failed to fetch");
         const json = await res.json();
-        const path = findHabitsPath(json?.record);
+        const path = findHabitsPath(json?.record) || ['habits'];
         return getAtPath(json?.record, path) || [];
     } catch (err) {
         console.error('Error fetching data:', err);
@@ -23,7 +23,7 @@ export const putBinDataForUser = async (userId, userHabits) => {
         const res = await fetch(API_URL, { headers: { "X-Master-Key": API_KEY } });
         if (!res.ok) throw new Error("Failed to fetch existing data");
         const json = await res.json();
-        const path = findHabitsPath(json?.record);
+        const path = findHabitsPath(json?.record) || ['habits'];
         const allHabits = getAtPath(json?.record, path) || [];
         const updatedHabits = [
             ...allHabits.filter(h => h.userId !== userId),

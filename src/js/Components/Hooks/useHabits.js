@@ -6,9 +6,11 @@ export const fetchHabitsForUser = async (userId) => {
     let userHabits = allHabits.filter(h => h.userId === userId);
 
     if (userHabits.length === 0) {
+
         const demoHabits = allHabits
             .filter(h => h.userId === "demo")
             .map(h => ({ ...h, id: Date.now() + Math.random(), userId }));
+
         if (demoHabits.length > 0) {
             await putBinDataForUser(userId, demoHabits);
             userHabits = demoHabits;

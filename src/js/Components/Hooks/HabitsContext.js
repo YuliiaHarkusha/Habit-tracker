@@ -4,11 +4,13 @@ import { fetchHabitsForUser } from "./useHabits";
 import { useHabitsActions } from "./useHabitsOperations";
 
 const HabitsContext = createContext(null);
+
 export const HabitsProvider = ({ children }) => {
     const { user } = useAuth();
     const [habits, setHabits] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
     useEffect(() => {
         const init = async () => {
             if (!user) return;
@@ -26,13 +28,16 @@ export const HabitsProvider = ({ children }) => {
         };
         init();
     }, [user]);
+
     const actions = useHabitsActions(user?.id, habits, setHabits);
+
     return (
         <HabitsContext.Provider value={{ habits, loading, error, ...actions }}>
             {children}
         </HabitsContext.Provider>
     );
 };
+
 export const useHabitsContext = () => {
     const context = useContext(HabitsContext);
     if (!context) throw new Error("useHabitsContext must be used within HabitsProvider");
